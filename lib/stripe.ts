@@ -35,7 +35,7 @@ export const buy = async function (priceId: string) {
   const session = await stripe.checkout.sessions.create({
     success_url: window.origin + "/app",
     cancel_url: window.location.href,
-    payment_method_types: ["card", "paypal"],
+    allowed_payment_method_types: ["card", "paypal"],
     line_items: [{ quantity: 1, price: priceId }],
     customer: user.stripeCustomerId,
     mode: "payment",
